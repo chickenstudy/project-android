@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#322F2F"
+    tools:context=".activities.manager.ManageProductsActivity">
+    <ProgressBar
+        android:id="@+id/manage_products_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+
+        />
+    <include layout="@layout/custom_bar"/>
+
+
+    <ImageView
+        android:layout_marginTop="55dp"
+        android:id="@+id/nav_menu_item_category_img"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:src="@drawable/coffe"
+        android:scaleType="centerCrop"/>
+    <Button
+        android:id="@+id/manageProduct_btnCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#4CAF50"
+        android:text="Add New"
+        android:textAllCaps="false"
+        android:layout_marginTop="275dp"
+        android:layout_marginLeft="310dp"/>
+    <ScrollView
+
+        android:layout_marginTop="296dp"
+        android:id="@+id/manageProduct_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/nav_menu_products_list_bg"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/manage_products_rec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

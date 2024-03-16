@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CafeRestaurantSystem"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".activities.manager.UpdateProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.manager.CreateProductActivity"
+            android:exported="true"
+            android:parentActivityName=".activities.manager.ManageProductsActivity">
+
+        </activity>
+        <activity android:name=".activities.manager.CreateCategoryActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.manager.ManageProductsActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.manager.ManagerFragment" />
+        </activity>
+        <activity
+            android:name=".activities.UpdateUserProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.PlacedOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.testActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.NavMenuProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.WelcomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.CafeRestaurantSystem.NoActionBar" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+</manifest>

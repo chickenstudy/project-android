@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#322F2F">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/product_item_appBar"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:fitsSystemWindows="true"
+        android:background="@drawable/side_nav_bar"
+        >
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+
+            app:expandedTitleTextColor="@color/white"
+
+            >
+            <ImageView
+                android:id="@+id/nav_menu_item_category_img"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:src="@drawable/coffe"
+                android:scaleType="centerCrop"/>
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:titleTextColor="@color/white" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:background="@drawable/nav_menu_products_list_bg"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/nav_menu_products_rec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/nav_menu_products_myCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/purple_500"
+        android:baselineAlignBottom="false"
+        android:clickable="true"
+        android:src="@drawable/baseline_shopping_cart_24"
+        app:fabSize="normal"
+        app:layout_anchor="@id/product_item_appBar"
+        app:layout_anchorGravity="end|bottom"
+        app:tint="@null"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Profile.ProfileFragment"
+
+    >
+
+
+    <ImageView
+        android:id="@+id/user_profile_img"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/user_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/user_profile_fullName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#4DCDC9"
+        android:drawableLeft="@drawable/baseline_person_24"
+        android:drawablePadding="13dp"
+        android:fontFamily="sans-serif"
+        android:text="FullName: Nguyen Viet Khoa"
+        android:textColor="#212121"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_profile_img"
+        app:layout_constraintWidth_percent=".9" />
+
+    <TextView
+        android:id="@+id/user_profile_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#4DCDC9"
+        android:drawableLeft="@drawable/baseline_email_24"
+        android:drawablePadding="13dp"
+        android:fontFamily="sans-serif"
+        android:text="Email: khoanvhe153692@fpt.edu.vn"
+        android:textColor="#212121"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_profile_fullName"
+        app:layout_constraintWidth_percent=".9" />
+
+    <TextView
+        android:id="@+id/user_profile_phone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#4DCDC9"
+        android:drawableLeft="@drawable/baseline_phone_24"
+        android:drawablePadding="13dp"
+        android:fontFamily="sans-serif"
+        android:text="Phone: 0986289866"
+        android:textColor="#212121"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_profile_email"
+        app:layout_constraintWidth_percent=".9" />
+
+    <TextView
+        android:id="@+id/user_profile_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#4DCDC9"
+        android:drawableLeft="@drawable/baseline_fmd_good_24"
+        android:drawablePadding="13dp"
+        android:fontFamily="sans-serif"
+        android:text="Address: Nghe An"
+        android:textColor="#212121"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_profile_phone"
+        app:layout_constraintWidth_percent=".9" />
+
+    <Button
+        android:id="@+id/user_profile_btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#063849"
+        android:fontFamily="sans-serif"
+        android:text="Update Profile"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_profile_address"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

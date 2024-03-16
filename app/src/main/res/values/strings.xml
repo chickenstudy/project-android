@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Cafe Mobile</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Welcome to Cafe mobile</string>
+    <string name="nav_header_subtitle"></string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+
+    <string name="nav_menu_cart">My Cart</string>
+    <string name="nav_menu_order">My Order</string>
+    <string name="nav_menu_restaurant_menu">Menu</string>
+    <string name="nav_menu_profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="product_name">Product Name</string>
+    <string name="rating_value">5.0</string>
+    <string name="ProjectName">Welcome to Cafe mobile</string>
+    <string name="login">Login</string>
+    <string name="nav_manager">Manager</string>
+
+
+</resources>
