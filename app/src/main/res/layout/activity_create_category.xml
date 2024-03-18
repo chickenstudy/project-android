@@ -51,17 +51,6 @@
             android:hint="Enter Category Name"
             android:fontFamily="@font/amita"/>
 
-        <!-- Category image input -->
-        <EditText
-            android:id="@+id/create_category_image"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:layout_marginTop="20dp"
-            android:inputType="text"
-            android:hint="Enter Category Image URL"
-            android:fontFamily="@font/amita"/>
-
         <!-- Create button -->
         <Button
             android:id="@+id/create_category_btnCreate"

@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -71,7 +72,7 @@ public class CreateProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_product);
-
+        Log.d("DEBUG", "Inside onCreate(): Value of imageUri: " + imageUri);
         //ToolBar
         Toolbar toolbar = (Toolbar) findViewById(R.id.custom_toolbar);
         setSupportActionBar(toolbar);
@@ -81,7 +82,7 @@ public class CreateProductActivity extends AppCompatActivity {
 
         //data instance
         firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseStorage =firebaseStorage.getInstance();
+        firebaseStorage =FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
 
 
@@ -105,9 +106,9 @@ public class CreateProductActivity extends AppCompatActivity {
                             categoryBaseAdapter = new CategoryBaseAdapter(CreateProductActivity.this, categoryModels);
                             categorySpinner.setAdapter(categoryBaseAdapter);
                         }
-                     else {
-                        Toast.makeText(CreateProductActivity.this, "Err" + task.getException(), Toast.LENGTH_SHORT).show();
-                    }
+                        else {
+                            Toast.makeText(CreateProductActivity.this, "Err" + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
@@ -127,15 +128,15 @@ public class CreateProductActivity extends AppCompatActivity {
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CreateProduct();
                 UploadImage();
+//                CreateProduct();
             }
         });
         ProductImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // CheckStoragePermission();
-                PickImageFromGallery();
+                CheckStoragePermission();
+//                PickImageFromGallery();
             }
         });
     }
@@ -197,7 +198,7 @@ public class CreateProductActivity extends AppCompatActivity {
                         public void onSuccess(Uri uri) {
                             if(uri != null){
                                 photoURl = uri.toString();
-
+                                CreateProduct();
                             }
 
                         }
@@ -269,7 +270,8 @@ public class CreateProductActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(CreateProductActivity.this,"Insert successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CreateProductActivity.this,"Create Product successfully", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {

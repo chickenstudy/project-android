@@ -9,7 +9,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -42,15 +41,17 @@ public class CreateCategoryActivity extends AppCompatActivity {
 
     EditText categoryName;
     Button btnCreate;
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == android.R.id.home) { // Nút quay lại
-            onBackPressed(); // Gọi onBackPressed() để thoát khỏi activity hiện tại
+        if (id == android.R.id.home) {
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,25 +64,17 @@ public class CreateCategoryActivity extends AppCompatActivity {
         categoryName = findViewById(R.id.create_category_name);
         cardImageView = findViewById(R.id.create_category_img);
         btnCreate = findViewById(R.id.create_category_btnCreate);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.custom_toolbar);
+        Toolbar toolbar = findViewById(R.id.custom_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Create Category");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Create Category");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        btnCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createCategory();
-                uploadImage();
-            }
+        btnCreate.setOnClickListener(view -> {
+            // Gọi uploadImage trước
+            uploadImage();
         });
 
-        cardImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkStoragePermission();
-            }
-        });
+        cardImageView.setOnClickListener(view -> checkStoragePermission());
     }
 
     private void checkStoragePermission() {
@@ -123,6 +116,8 @@ public class CreateCategoryActivity extends AppCompatActivity {
                     .addOnSuccessListener(taskSnapshot -> myRef.getDownloadUrl().addOnSuccessListener(uri -> {
                         if (uri != null) {
                             photoUrl = uri.toString();
+                            // Sau khi photoUrl được gán giá trị, gọi createCategory ở đây
+                            createCategory();
                         }
                     }))
                     .addOnFailureListener(e -> Toast.makeText(CreateCategoryActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show());
@@ -137,13 +132,9 @@ public class CreateCategoryActivity extends AppCompatActivity {
             return;
         }
 
-        // Tạo một ID duy nhất cho CategoryModel
-
-        // Tạo một CategoryModel mới
-        int categoryId = 0;
+        int categoryId = generateUniqueId();
         CategoryModel categoryModel = new CategoryModel(categoryId, categoryNameStr, photoUrl);
 
-        // Lưu CategoryModel vào Firestore
         firebaseFirestore.collection("Category")
                 .document(String.valueOf(categoryId))
                 .set(categoryModel, SetOptions.merge())
@@ -156,6 +147,17 @@ public class CreateCategoryActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> Toast.makeText(CreateCategoryActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
+    private int generateUniqueId() {
+        // Lấy thời gian hiện tại dưới dạng số long
+        long currentTime = System.currentTimeMillis();
 
+        // Chuyển thời gian hiện tại thành một chuỗi
+        String currentTimeString = String.valueOf(currentTime);
 
+        // Lấy 6 ký tự cuối cùng của chuỗi thời gian để tạo ID
+        String uniqueIdString = currentTimeString.substring(currentTimeString.length() - 6);
+
+        // Chuyển chuỗi thành số int và trả về
+        return Integer.parseInt(uniqueIdString);
+    }
 }
